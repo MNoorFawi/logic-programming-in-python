@@ -26,9 +26,9 @@ facts(flavor, ("sweet", "dessert"),
               ("savory", "cheese"),
               ("sweet", "juice"))
 
-food_flavor, food_lv, flavor_lv = var(), var(), var()
-run(0, food_flavor, food_type(food_flavor, food_lv),
-                    flavor("sweet", food_lv))
+food_flavor, food_v, flavor_v = var(), var(), var()
+run(0, food_flavor, food_type(food_flavor, food_v),
+                    flavor("sweet", food_v))
                     
 def food_flavor(x, y):
     z = var()
