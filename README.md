@@ -38,13 +38,13 @@ that you need to write all the facts and rules, and this becomes
 impossible when the data is huge as it is nowadays.
 
 In this post we will try to explore how we can use python as a Logic
-language using the ![logpy](https://github.com/logpy/logpy) library. It
+language using the [logpy](https://github.com/logpy/logpy) library. It
 enables us to approach problems as rules and facts like in Prolog but
 from within python.
 
 First we need to install the package “*pip install kanren*” and import
 it. The name of the library is now Kanren yes :D. because it uses the
-![MiniKanren](http://minikanren.org/) approach and it’s merged with some
+[MiniKanren](http://minikanren.org/) approach and it’s merged with some
 other libraries.
 
 ``` python
