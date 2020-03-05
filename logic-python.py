@@ -11,7 +11,7 @@ from kanren import *
 #flavor(savory, cheese).
 #flavor(sweet, juice).
 #food_flavor(X, Y) :- food_type(X, Z), flavor(Y, Z).
-#food_flavor(What, dessert).
+#food_flavor(What, sweet).
 
 food_type = Relation()
 flavor = Relation()
