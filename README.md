@@ -204,6 +204,8 @@ First here are the rules that we need to construct in the program.
 
 ![](log-py_files/figure-gfm/zebra%20riddle.png)
 
+The puzzle is to answer two questions using this knowledge: Who drinks water? and who owns the Zebra?
+
 Before begining to define the facts and rules. I want to explain some
 useful functions in logpy. **eq()** and **membero()**
 
