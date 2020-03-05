@@ -197,7 +197,7 @@ its ability to solve puzzles and riddles. It is amazing, you just need
 to construct the rules of the puzzle and the program will come up with
 the solutions in seconds.
 
-Let’s try to solve the famous ![Zebra
+Let’s try to solve the famous [Zebra
 Riddle](https://en.wikipedia.org/wiki/Zebra_Puzzle).
 
 First here are the rules that we need to construct in the program.
