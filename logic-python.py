@@ -1,18 +1,5 @@
 from kanren import *
 
-#food_type(gouda, cheese).
-#food_type(ritz, cracker).
-#food_type(steak, meat).
-#food_type(sausage, meat).
-#food_type(limonade, juice).
-#food_type(cookie, dessert).
-#flavor(sweet, dessert).
-#flavor(savory, meat).
-#flavor(savory, cheese).
-#flavor(sweet, juice).
-#food_flavor(X, Y) :- food_type(X, Z), flavor(Y, Z).
-#food_flavor(What, sweet).
-
 food_type = Relation()
 flavor = Relation()
 facts(food_type, ("gouda", "cheese"),
@@ -38,13 +25,6 @@ def food_flavor(x, y):
 what = var()
 print(run(0, what, food_flavor(what, "sweet")))
 print(run(0, what, food_flavor(what, "savory")))
-
-#likes(noor, sausage).
-#likes(melissa, pasta).
-#likes(dmitry, cookie).
-#likes(nikita, sausage).
-#likes(assel, limonade).
-#friend(X, Y) :- \+(X = Y), likes(X, Z), likes(Y, Z).
 
 likes = Relation()
 facts(likes, ("Noor", "sausage"),
@@ -81,41 +61,56 @@ facts(parent, ("Adam", "John"),
 print(run(1, x, parent(x, "John")))
 print(run(0, x, parent("Adam", x)))
 
-grandparent, Parent = var(), var()
-print(run(0, grandparent, parent(grandparent, Parent),
-                          parent(Parent, 'Emma')))
+grandparent, parent_v = var(), var()
+print(run(0, grandparent, parent(grandparent, parent_v),
+                          parent(parent_v, 'Emma')))
                           
                           
+# first define the right function which will set something to the right side of other things
 def right(x, y, lst):
+    # dict(zip([1, 2, 3], [2, 3])) ==>  {1: 2, 2: 3}
     return membero((x, y), zip(lst[1:], lst))
+
+# next function will check if two things next to each other    
 def next(x, y, lst):
+    # they are next to each other if x is to y right OR y is to x right
     return conde([right(x, y, lst)], [right(y, x, lst)])
 
+# houses
 houses = var()
 
+# puzzle rules
 zebra_riddle = lall(
+   # houses is equal to 5 var as there are 5 houses
    (eq, (var(), var(), var(), var(), var()), houses),
+   # house members
    (membero,('Englishman', var(), var(), var(), 'red'), houses),
    (membero,('Spaniard', var(), var(), 'dog', var()), houses),
    (membero,('Ukrainian', var(), 'tea', var(), var()), houses),
+   # put to the right
    (right,(var(), var(), var(), var(), 'ivory'),
-   (var(), var(), var(), var(), 'green'), houses),
+    (var(), var(), var(), var(), 'green'), houses),
    (membero,(var(), var(), 'coffee', var(), 'green'), houses),
    (membero,(var(), 'Old Gold', var(), 'snails', var()), houses),
    (membero,(var(), 'Kools', var(), var(), 'yellow'), houses),
+   # define the milk house as a 5-var tuple in the middle of the 5-var houses
    (eq,(var(), var(), (var(), var(), 'milk', var(), var()), var(), var()), houses),
+   # the same with the Norwegian in the first
    (eq,(('Norwegian', var(), var(), var(), var()), var(), var(), var(), var()), houses),
+   # check next to
    (next,(var(), 'Chesterfield', var(), var(), var()),
-   (var(), var(), var(), 'fox', var()), houses),
+    (var(), var(), var(), 'fox', var()), houses),
    (next,(var(), 'Kools', var(), var(), var()),
-   (var(), var(), var(), 'horse', var()), houses),
+    (var(), var(), var(), 'horse', var()), houses),
    (membero,(var(), 'Lucky Strike', 'Orange Juice', var(), var()), houses),
    (membero,('Japanese', "Parliaments", var(), var(), var()), houses),
    (next,('Norwegian', var(), var(), var(), var()),
-   (var(), var(), var(), var(), 'blue'), houses),
+    (var(), var(), var(), var(), 'blue'), houses),
+   # insert the water and zebra houses
    (membero,(var(), var(), "water", var(), var()), houses),
    (membero,(var(), var(), var(), 'zebra', var()), houses)
 )
 
-run(0, houses, zebra_riddle)
+# run the rules to see the houses structures.
+print(run(0, houses, zebra_riddle))
 
