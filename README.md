@@ -179,14 +179,14 @@ def dish_to_like(person, what):
     foodtype = var()
     foodflavor = var()
     return lall(likes(person, liked), food_type(liked, foodtype), 
-                flavor(foodflavor, foodtype), food_type(what, foodtype))
+                flavor(foodflavor, foodtype), food_flavor(what, foodflavor))
 
 ## let's recommend a dish to Noor who already liked sausage 
 what = var()
 dish = run(0, what, dish_to_like("Noor", what))
 print("since Noor has liked Sausage, he would like:", dish)
 
-#since Noor has liked Sausage, he would like: ('steak', 'sausage')
+#since Noor has liked Sausage, he would like: ('gouda', 'steak', 'sausage')
 ```
 
 Perfect\! of course this can be infered by eyes because it is a very
