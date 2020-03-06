@@ -47,7 +47,7 @@ def dish_to_like(person, what):
     foodtype = var()
     foodflavor = var()
     return lall(likes(person, liked), food_type(liked, foodtype), 
-                flavor(foodflavor, foodtype), food_type(what, foodtype))
+                flavor(foodflavor, foodtype), food_flavor(what, foodflavor))
 what = var()
 dish = run(0, what, dish_to_like("Noor", what))
 print("since Noor has liked Sausage, he would like:", dish)
