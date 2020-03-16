@@ -141,7 +141,7 @@ likes(dmitry, cookie).
 likes(nikita, sausage).
 likes(assel, limonade).
 
-friend(X, Y) :- \+(X = Y), likes(X, Z), likes(Y, Z).
+friend(X, Y) :- likes(X, Z), likes(Y, Z), \+(X = Y).
 ```
 
 The same facts and rules in python.
