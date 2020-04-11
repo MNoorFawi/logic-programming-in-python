@@ -213,7 +213,7 @@ useful functions in logpy. **eq()** and **membero()**
 For example:
 
 ``` python
-y = var()
+x = var()
 run(0, x, eq(x, y),
           eq(y, 5))
 # (5,)
